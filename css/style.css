@@ -1,0 +1,14 @@
+#welcome-screen {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+#start{
+font-size: 20px;
+font-weight: bold;
+}
+#restart{
+    font-size: 20px;
+    font-weight: bold;
+}
