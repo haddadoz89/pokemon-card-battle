@@ -1,4 +1,4 @@
-const pokemon = [
+export const pokemon = [
   {
     "id": 1,
     "name": {
