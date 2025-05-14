@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pokemon-card-battle</title>
+    <link rel="stylesheet" href="./css/gameScreenStylesheet.css">
+    <script defer src="./jss/pokemonList.js"></script>
+    <script defer src="./jss/app.js"></script>
+</head>
+<body>
+  <div id="game-layout">
+    <div id="deck-station">
+        <a href="welcomeScreen.html" id="back-to-home-button">back</a>
+        <div id="score-board">
+            <p>Player: <span id="player-score">0</span></p>
+            <p>Computer: <span id="computer-score">0</span></p>
+        </div>
+      <h3>Deck</h3>
+      <img id="deck-image" src="./images/back.png" alt="Deck" />
+    </div>
+    <main id="game-content">
+      <section class="play-section" id="computer-section">
+        <h2>COMPUTER</h2>
+        <div class="bench" id="computer-bench">
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+        </div>
+        <div class="active-area" id="computer-active-slot"></div>
+      </section>
+      <div class="versus">VS</div>
+      <section class="play-section" id="player-section">
+        
+        <div class="active-area" id="player-active-slot"></div>
+        <div class="bench" id="player-bench">
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+          <div class="card-slot"></div>
+        </div>
+        <h2>Player</h2>
+      </section>
+      <button id="restart-button">Restart</button>
+    </main>
+  </div>
+</body>
+</html>
