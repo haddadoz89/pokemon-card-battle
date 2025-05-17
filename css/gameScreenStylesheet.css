@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'); */
 body {
   margin: 0;
   padding: 0;
-  font-family: "Luckiest Guy", cursive;
+  /* font-family: "Luckiest Guy", cursive; */
   background-color: rgb(1, 177, 69);
   color: white;
 }
@@ -126,4 +126,8 @@ body {
 
 #restart-button:hover{
     transform: scale(1.05);
+}
+#player-side{
+  margin-bottom: 0;
+  padding-top: 30px;
 }
