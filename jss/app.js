@@ -38,9 +38,11 @@ const typeRule = {
 const PlayerBenchSlotElement = document.querySelectorAll('#player-bench .card-slot')
 const computerBenchSlotElement =document.querySelectorAll('#computer-bench .card-slot')
 const deckElement = document.querySelector('#deck-image')
-const playerActiveSlotElement = document.getElementById("player-active")
-const computerActiveSlotElement = document.getElementById("computer-active")
+const playerActiveSlotElement = document.getElementById("player-active-slot")
+const computerActiveSlotElement = document.getElementById("computer-active-slot")
 const restartButtonElement = document.getElementById('restart-button')
+const playerScoreElement = document.getElementById('player-score')
+const computerScoreElement = document.getElementById('computer-score')
 
 // Variable
 
@@ -49,6 +51,8 @@ let computerCards =[]
 let isDeckFull = false
 let playerWins = 0
 let computerWins = 0
+let playerRecord = 0
+let computerRecord = 0 
 
 // Function
 
@@ -137,7 +141,7 @@ const showPopup = (message) => {
   popupBox.style.alignItems = "center"
   popupBox.style.justifyContent = "center"
   popupBox.style.zIndex = "9999"
-  popupContent.style.backgroundColor = "white"
+  popupContent.style.backgroundColor = "black"
   popupContent.style.padding = "20px 30px"
   popupContent.style.borderRadius = "10px"
   popupContent.style.textAlign = "center"
@@ -147,6 +151,9 @@ const showPopup = (message) => {
   popupContent.appendChild(messageElement)
   popupBox.appendChild(popupContent)
   document.body.appendChild(popupBox)
+  setTimeout(() => {
+    document.body.removeChild(popupBox)
+  }, 5000)
 }
 
 const compareCards =(playerCard,computerCard)=>{
@@ -171,7 +178,10 @@ const compareCards =(playerCard,computerCard)=>{
   return "draw"
   }
 }
-
+const updateScoreDisplay = () => {
+  playerScoreElement.innerText = playerRecord
+  computerScoreElement.innerText = computerRecord
+}
 const playCard = (index) => {
   const playerCard = playerCards[index]
   const randomIndex = Math.floor(Math.random() * computerCards.length)
@@ -195,9 +205,11 @@ const playCard = (index) => {
     if (playerWins === 3) {
     showPopup("🏆 Player wins the game!")
     isDeckFull = false
+    updateScoreDisplay(playerRecord++)
   } else if (computerWins === 3) {
     showPopup("💻 Computer wins the game!")
     isDeckFull = false
+    updateScoreDisplay(computerRecord++)
   }
 
   if (playerCards.every(card => card === null) && computerCards.length === 0) {
