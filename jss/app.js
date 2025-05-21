@@ -36,7 +36,7 @@ const typeRule = {
 }
 
 const PlayerBenchSlotElement = document.querySelectorAll('#player-bench .card-slot')
-const computerBenchSlotElement =document.querySelectorAll('#computer-bench .card-slot')
+const computerBenchSlotElement = document.querySelectorAll('#computer-bench .card-slot')
 const deckElement = document.querySelector('#deck-image')
 const playerActiveSlotElement = document.getElementById("player-active-slot")
 const computerActiveSlotElement = document.getElementById("computer-active-slot")
@@ -100,8 +100,10 @@ const showComputerCards =()=>{
 
 const handleDeckClick =()=>{
   if (isDeckFull){
-    return
+    return 
   }
+  playerActiveSlotElement.innerHTML = ""
+  computerActiveSlotElement.innerHTML = ""
   const draw = randomCards()
   playerCards = draw.player
   computerCards =draw.computer
@@ -153,7 +155,7 @@ const showPopup = (message) => {
   document.body.appendChild(popupBox)
   setTimeout(() => {
     document.body.removeChild(popupBox)
-  }, 5000)
+  }, 1000)
 }
 
 const compareCards =(playerCard,computerCard)=>{
@@ -165,10 +167,10 @@ const compareCards =(playerCard,computerCard)=>{
     else if (playerCard.HP < computerCard.HP) return "computer"
     else return "draw"
   }
-  if (typeRule[playerType] && typeRule[playerType].includes(computerType)) {
+  if (typeRule[playerType].includes(computerType)) {
     return "player"
   }
-  if (typeRule[computerType] && typeRule[computerType].includes(playerType)) {
+  if (typeRule[computerType].includes(playerType)) {
     return "computer"
   }
   if (playerCard.HP > computerCard.HP) {return "player"
@@ -202,21 +204,31 @@ const playCard = (index) => {
   } else {
     showPopup("🤝 It's a draw!")
   }
-    if (playerWins === 3) {
-    showPopup("🏆 Player wins the game!")
-    isDeckFull = false
-    updateScoreDisplay(playerRecord++)
-  } else if (computerWins === 3) {
-    showPopup("💻 Computer wins the game!")
-    isDeckFull = false
-    updateScoreDisplay(computerRecord++)
-  }
+if (playerWins === 3) {
+  showPopup("🏆 Player wins the game!")
+  playerRecord++
+  updateScoreDisplay()
+  isDeckFull = false
+  playerWins = 0
+  computerWins = 0
+} else if (computerWins === 3) {
+  showPopup("💻 Computer wins the game!")
+  computerRecord++
+  updateScoreDisplay()
+  isDeckFull = false
+  playerWins = 0
+  computerWins = 0
+}
 
   if (playerCards.every(card => card === null) && computerCards.length === 0) {
   isDeckFull = false
+  playerWins = 0
+  computerWins = 0
   }
 }
 const restartGame = ()=>{
+  playerRecord = 0
+  computerRecord = 0 
   playerWins = 0
   computerWins = 0
   isDeckFull = false
@@ -226,6 +238,7 @@ const restartGame = ()=>{
   computerBenchSlotElement.forEach(slot => slot.innerHTML = "")
   playerActiveSlotElement.innerHTML = ""
   computerActiveSlotElement.innerHTML = ""
+  updateScoreDisplay()
 }
 
 // eventListner
