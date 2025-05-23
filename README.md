@@ -1,10 +1,3 @@
------------------------------------------------------------------------------------------
-├	Alt + 9500
-
-└	Alt + 9492
-
-│	Alt + 9474
------------------------------------------------------------------------------------------
 # Pokemon Card Battle Game
 
 A browser card game using JavaScript, HTML, and CSS where the player battles against the computer using Pokemon cards.
