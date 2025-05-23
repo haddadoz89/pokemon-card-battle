@@ -101,8 +101,7 @@ pokemon-card-battle/
 ├── jss/
 │   ├── app.js
 │   └── pokemonList.js
-├── gamescreenhtml
-│   ├── gameScreen.html
+├── gameScreen.html
 ├── index.html
 └── README.md
 ```
