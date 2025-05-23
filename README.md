@@ -103,7 +103,7 @@ pokemon-card-battle/
 │   └── pokemonList.js
 ├── gamescreenhtml
 │   ├── gameScreen.html
-├── welcomeScreen.html
+├── index.html
 └── README.md
 ```
 -----------------------------------------------------------------------------------------
