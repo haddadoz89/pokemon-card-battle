@@ -78,6 +78,7 @@ const showPlayerCards =(cards)=>{
     const hp = document.createElement('div')
     const lineBreak = document.createElement('br')
     img.src = card.image
+    img.alt = `${card.name} card`
     infoDiv.style.textAlign ="center"
     infoDiv.style.fontSize = "12px"
     infoDiv.style.borderRadius = "4px"
@@ -94,6 +95,7 @@ const showComputerCards =()=>{
     slot.innerHTML = ""
     const img = document.createElement('img')
     img.src = "./images/back.png"
+    img.alt ="Back of card"
     slot.appendChild(img)
   })
 }
@@ -125,7 +127,7 @@ const showActiveCard = (card ,side) =>{
 
   const img = document.createElement("img");
   img.src = card.image;
-
+  img.alt = `${card.name} active card`
   target.appendChild(img);
 }
 
@@ -142,20 +144,19 @@ const showPopup = (message) => {
   popupBox.style.display = "flex"
   popupBox.style.alignItems = "center"
   popupBox.style.justifyContent = "center"
-  popupBox.style.zIndex = "9999"
   popupContent.style.backgroundColor = "black"
   popupContent.style.padding = "20px 30px"
   popupContent.style.borderRadius = "10px"
   popupContent.style.textAlign = "center"
   popupContent.style.fontSize = "18px"
-  popupContent.style.boxShadow = "0 0 10px black"
+  popupContent.style.boxShadow = "0 0 10px yellow"
   messageElement.textContent = message
   popupContent.appendChild(messageElement)
   popupBox.appendChild(popupContent)
   document.body.appendChild(popupBox)
   setTimeout(() => {
     document.body.removeChild(popupBox)
-  }, 1000)
+  }, 2000)
 }
 
 const compareCards =(playerCard,computerCard)=>{
